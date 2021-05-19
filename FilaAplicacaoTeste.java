@@ -18,12 +18,12 @@ public class FilaAplicacaoTeste {
 
        int opcao = -1;
         
-        FilaAplicacao fila = new FilaAplicacao(20);
+        FilaAplicacao fila = new FilaAplicacao();
         
         while ( opcao != 0 ) {       
-            String menu =   "1 - Adicionar na fila \n" + 
-                            "2 - Retirar da fila \n" +
-                            "3 - Imprimir fila \n"+
+            String menu =   "1 - Adicionar paciente \n" + 
+                            "2 - Atender paciente \n" +
+                            "3 - Mostrar fila \n"+
                             "0 - Sair";
             opcao = Integer.valueOf( JOptionPane.showInputDialog( menu ) );
             switch( opcao ){
@@ -38,6 +38,7 @@ public class FilaAplicacaoTeste {
                     }
                     break;
                 case 2:
+                    
                     fila.retirar();
                     break;
                 case 3: 

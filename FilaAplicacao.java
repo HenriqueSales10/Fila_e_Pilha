@@ -14,37 +14,20 @@ import javax.swing.JOptionPane;
 public class FilaAplicacao {
 
    // Vetor para armazenar os nomees enfileirados
-    private String[] nomes;
-    private String[] descricoes;
-    private int[] idades;
+    private String[][] info = new String [20][2];
+    private int[] idades = new int [20];
     
     // Atributo que guarda a posição no nomes onde está o fim da fila
-    private int fim;
+    private int fim = -1;
     
-    // Atributo para guardar o tamanho do nomes
-    private int tamanho;
-    
-    public FilaAplicacao(int tamanho){
-        
-        // Inicialização dos vetores com o tamanho recebido por parâmetro
-        nomes = new String[tamanho];
-        descricoes = new String[tamanho];
-        idades = new int[tamanho];
-        
-        // Como o Zero é uma posição válida no nomes, então colocamos um nome
-        // não válido para sinalizar que a fila está vazia
-        fim = -1;
-        
-        this.tamanho = tamanho;
-    }
     
     public void adicionar(String nome, String descricao, int idade){
-        if( fim == tamanho - 1){
+        if( fim == info.length - 1){
             JOptionPane.showMessageDialog(null, "A fila está cheia !");
         }else{
             fim ++;
-            nomes[fim] = nome;
-            descricoes[fim] = descricao;
+            info[fim][0] = nome;
+            info[fim][1] = descricao;
             idades[fim] = idade;
             imprimir();
         }
@@ -57,8 +40,7 @@ public class FilaAplicacao {
             
             // laço para organizar a fila
             for(int i = 0; i<fim; i++){
-                nomes[i] = nomes[i+1];
-                descricoes[i] = descricoes[i+1];
+                info[i] = info[i+1];
                 idades[i] = idades[i+1];
             }
             
@@ -74,18 +56,27 @@ public class FilaAplicacao {
         }else{
             String texto = "";
             for(int i = 0 ; i <= fim; i++){
-                texto += "Posição na fila " + (i+1)+ " Nome : " + nomes[i] + " Descrição: "+ descricoes[i]+ " Idade: "+ idades[i]+"   \n";
+                texto += "Posição na fila " + (i+1)+ " Nome : " + info[i][0] + " Descrição: "+ info[i][0]+ " Idade: "+ idades[i]+"   \n";
             }
             JOptionPane.showMessageDialog(null, texto);
         }
     }
     
     public boolean estaCheia(){
-        if( fim == tamanho - 1){
+        if( fim == info.length - 1){
             return true;
         }else{
             return false;
         }
     }
+    
+    public boolean estaVazia(){
+        if( info.length == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
 
 }
