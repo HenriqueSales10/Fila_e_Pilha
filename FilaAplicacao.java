@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class FilaAplicacao {
 
-   // Vetor para armazenar os nomees enfileirados
+   // Vetor e matriz para armazenar os pacientes na fila
     private String[][] info = new String [20][2];
     private int[] idades = new int [20];
     
